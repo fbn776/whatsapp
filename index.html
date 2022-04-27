@@ -1,0 +1,119 @@
+<html>
+ <head>
+   <meta name="viewport" content="width= device-width, initial-scale=1.0"> 
+<style>
+.logo {
+	position:fixed;
+	bottom:10px;
+	left:10px;
+	opacity:0.3;
+	font-weight:800;
+	font-size:10px;
+	z-index:999;
+}
+</style>
+<script src="../../../libs/lib.js"></script>
+<link rel="stylesheet" href="../../../libs/lib.css">
+</style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="logo">fbn776</div>
+<div class="header">
+	<div class="title">Message Sender</div><br><br>
+	<div class="social_ic flex">
+		<a href="https://www.twitter.com/fbn776"><img src="ic/twitter.png"></a>
+		<a href="https://fbn776.github.io/"><img src="ic/home.png"></a>
+		<a href="https://github.com/fbn776"><img src="ic/github.png"></a>
+	</div>
+</div>
+<div class="rest">
+	<label>Number:</label>
+	<div class="input_class">
+		<input type="number" placeholder="Enter number" id="number">
+		<div class="img flex" onclick="clearInput(this)"><img src="ic/trash.png"></div>
+	</div><br>
+	<label>Message:</label>
+	<div class="input_class">
+		<input type="text" placeholder="Enter message" id="message">
+		<div class="img flex" onclick="clearInput(this)"><img src="ic/trash.png"></div>
+	</div><br>
+	<label>Settings</label>
+	<div class="panel">
+		<br>
+		<div class="label flex_s">
+			Repeat:<input type="checkbox" id="repeat">
+		</div>
+		<div class="label flex_s">
+			Space between:<input type="checkbox" id="space_btw">
+		</div>
+		<div class="label flex_s">
+			Generate randomly:<input id="random_check" type="checkbox">			
+		</div>
+		<label style="font-size:7px">Select options for random message</label><br>
+		<label style="font-size:7px">(select all that applies)</label><br>		
+		<div class="padd_label">
+			<div class="padd_label_top">
+				<div class="label flex_s">
+					length:<input type="number" value="20" placeholder="len" id="rand_length" disabled="disabled">
+				</div>
+				<div class="label flex_s">
+					A-Z:<input type="checkbox" id="alpha_cap" disabled="disabled" >
+				</div>
+				<div class="label flex_s">
+					a-z:<input type="checkbox" id="alpha_small" disabled="disabled" >
+				</div>
+				<div class="label flex_s">
+					0-9:<input type="checkbox" id="num" disabled="disabled" >
+				</div>
+				<div class="label flex_s">
+					Other:<input type="checkbox" id="spec" disabled="disabled" >
+				</div>
+			</div>
+			<button class="add_new_btn" onclick="openAddMenu()">Add  &#43;</button>
+		</div>
+		<br>
+	</div><br>
+	<div class="submit_btn_cont"><button onclick="sendMessage()" class="submit_btn">Submit</button></div>
+</div>
+
+<div class="add_new_opt">
+	<div class="bg"></div>
+	<div class="add_new_menu">
+		<img class="help_on_add" src="ic/help.png" onclick="openAddHelp()">
+		<div class="title">Add custom lists</div><br>
+		<label>Enter name:</label><br>
+		<input type="text" id="new_list_input" class="new_list_name" placeholder="Name" ><br>
+		<label>Enter list:</label><br>
+		<input type="text" id="new_list_input" class="new_list_list" placeholder="List" ><br>
+		<div class="add_btns">
+			<button onclick="cancelAdd()">Cancel</button>
+			<button onclick="createAdd()">Create</button>
+		</div>
+	</div>
+	<div class="add_help">
+		<div class="add_help_exit" onclick="winOp(this.parentElement,'close')">&times</div>
+		<div class="content">
+			<h2>Guide for adding custom list</h2><br>
+			<p>
+				You can add custom list to the existing lits. When you choose the random generation option, you can chose from these options: A-Z, a-Z, 0-9, and some special characters. Using this you add custom ones. <br>
+				
+				To add these, you need to enter the list element one by one and seperate them using commas (,).<br><br>
+				Example:<br>
+				You need a set of names to display that names in random order in a chat, for that you can do this,<br><br>
+				<code style="width:100%;border-radius:8px;display:inline-block;padding:10px 18px;background-color:#ddd">Name1,Name2,Name3,Name4...</code><br><br>
+				These value are stored, so whenever you come back, those list will be saved!<br>
+				Note: Some characters are larger than they appear. So even when you are selecting a long lengthed item, the message won't be that long.
+			</p>
+		</div>
+	</div>
+</div>
+<script>
+var rand_check_data = {};
+if(localStorage.hasOwnProperty('rand_check_data')){
+	rand_check_data = jsonP(localStorage.getItem('rand_check_data'));
+}
+</script>
+<script src="script.js"></script>
+ </body>
+</html>
